@@ -1,7 +1,7 @@
 /* =========================================================
-   APEX MOTORS — legal.js
+   APEX MOTORS - legal.js
    Shared behavior for privacy.html / terms.html / cookies.html
-   (Lightweight sibling of script.js — no inventory/homepage deps)
+   (Lightweight sibling of script.js, no inventory/homepage deps)
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apex Motors — Luxury, Performance & Electric Vehicles</title>
+<title>Apex Motors | Luxury, Performance and Electric Vehicles</title>
 <meta name="description" content="Apex Motors is a premier dealership for luxury, exotic, performance, and electric vehicles from the world's most prestigious automotive brands.">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -62,16 +62,15 @@
     <div class="hero-bg">
       <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2400&auto=format&fit=crop" alt="" class="hero-img" id="heroImg">
       <div class="hero-scrim"></div>
-      <div class="hero-sweep" id="heroSweep" aria-hidden="true"></div>
     </div>
 
     <div class="hero-content">
-      <p class="eyebrow reveal-up">Est. Excellence — Est. Since 2009</p>
+      <p class="eyebrow reveal-up">Since 2009</p>
       <h1 class="hero-title">
         <span class="reveal-up d1">Drive</span>
-        <span class="reveal-up d2"><em>Excellence.</em></span>
+        <span class="reveal-up d2">Excellence.</span>
       </h1>
-      <p class="hero-sub reveal-up d3">Discover an exclusive collection of luxury, performance, and electric vehicles from the world's most prestigious automotive brands.</p>
+      <p class="hero-sub reveal-up d3">Luxury, performance and electric vehicles from leading brands. Browse the inventory or book a test drive.</p>
       <div class="hero-actions reveal-up d4">
         <a href="#inventory" class="btn btn-gold">Browse Inventory</a>
         <button class="btn btn-outline" id="heroTestDriveBtn" type="button">Book Test Drive</button>
@@ -227,7 +226,7 @@
       <div class="compare-table-wrap">
         <table class="compare-table" id="compareTable">
           <thead>
-            <tr><th></th><th id="compareHeadA">—</th><th id="compareHeadB">—</th></tr>
+            <tr><th></th><th id="compareHeadA">-</th><th id="compareHeadB">-</th></tr>
           </thead>
           <tbody id="compareBody"></tbody>
         </table>
@@ -286,17 +285,6 @@
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS ============ -->
-  <section class="testimonials" id="testimonials">
-    <div class="section-inner">
-      <div class="section-head">
-        <p class="eyebrow">Client Word</p>
-        <h2>Testimonials</h2>
-      </div>
-      <div class="testimonial-track" id="testimonialTrack"></div>
-    </div>
-  </section>
-
   <!-- ============ GALLERY ============ -->
   <section class="gallery" id="gallery">
     <div class="section-inner">
@@ -322,15 +310,6 @@
           <li><span>Email</span>concierge@apexmotors.example</li>
           <li><span>Hours</span>Mon–Sat 9:00–19:00 · Sun 11:00–17:00</li>
         </ul>
-
-        <div class="map-embed">
-          <iframe
-            title="Apex Motors location"
-            src="https://www.google.com/maps?q=Beverly+Hills,CA&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
       </div>
 
       <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
@@ -354,7 +333,7 @@
           <textarea id="cMessage" name="message" rows="4" required></textarea>
         </div>
         <button type="submit" class="btn btn-gold">Send Message</button>
-        <p class="form-success" id="contactSuccess" hidden>Thank you — a member of our team will be in touch shortly.</p>
+        <p class="form-success" id="contactSuccess" hidden>Thank you. A member of our team will be in touch shortly.</p>
       </form>
     </div>
   </section>
@@ -365,7 +344,7 @@
       <div>
         <p class="eyebrow">Stay Ahead</p>
         <h2>Join the Apex Circle</h2>
-        <p class="section-desc">New arrivals, private previews, and market insight — straight to your inbox.</p>
+        <p class="section-desc">New arrivals, private previews, and market insight, sent to your inbox.</p>
       </div>
       <form class="newsletter-form" id="newsletterForm">
         <input type="email" placeholder="Your email address" required aria-label="Email address">
@@ -484,7 +463,7 @@
         <button type="submit" class="btn btn-gold">Confirm Booking</button>
       </form>
       <div class="form-success-panel" id="testDriveSuccess" hidden>
-        <p class="success-mark">✓</p>
+        <p class="success-mark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></p>
         <h4>You're all set.</h4>
         <p>Your test drive request has been received. A member of our concierge team will confirm your appointment within 24 hours.</p>
         <button class="btn btn-outline" data-close-modal>Done</button>

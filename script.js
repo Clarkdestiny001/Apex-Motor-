@@ -1,10 +1,10 @@
 /* =========================================================
-   APEX MOTORS — script.js
+   APEX MOTORS - script.js
    Vanilla JS. No frameworks. Organized by feature.
    ========================================================= */
 
 /* ---------------------------------------------------------
-   1. DATA — demo inventory. In production this would come
+   1. DATA - demo inventory. In production this would come
       from a backend / headless CMS.
    --------------------------------------------------------- */
 const BRANDS = ["Mercedes-Benz","BMW","Audi","Porsche","Lexus","Tesla","Ferrari","Lamborghini","Land Rover"];
@@ -154,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderServices();
   populateCompareSelects();
   renderCompare();
-  renderTestimonials();
   renderGallery();
   renderSocialIcons();
   populateTestDriveVehicles();
@@ -310,39 +309,53 @@ function initSearchForm(){
 }
 
 
+const ICONS = {
+  check: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>',
+  search: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
+  card: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
+  truck: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>',
+  shield: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>',
+  repeat: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m17 2 4 4-4 4M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v1a4 4 0 0 1-4 4H3"/></svg>',
+  clock: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+  wrench: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+  plane: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>',
+  umbrella: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10.06 10.06 1 0 0-20 0Z"/><path d="M12 12v8a2 2 0 0 0 4 0M12 2v1"/></svg>',
+  tick: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+};
+
 /* ---------------------------------------------------------
    7. WHY US / SERVICES / STATS DATA
    --------------------------------------------------------- */
 const WHY_US = [
-  { icon:"✓", title:"Certified Vehicles", desc:"Every vehicle passes a rigorous multi-point certification before it reaches our floor." },
-  { icon:"⚙", title:"Multi-Point Inspection", desc:"200+ checkpoints covering performance, safety, and cosmetic condition." },
-  { icon:"$", title:"Financing Solutions", desc:"Tailored financing and leasing structured around how you actually drive." },
-  { icon:"⇄", title:"Nationwide Delivery", desc:"White-glove, enclosed-transport delivery to your door, anywhere in the country." },
-  { icon:"🛡", title:"Warranty Included", desc:"Every vehicle leaves Apex backed by a comprehensive limited warranty." },
-  { icon:"↻", title:"Trade-In Program", desc:"Transparent, data-backed valuations — trade in the same day you buy." }
+  { icon:"check", title:"Certified Vehicles", desc:"Every vehicle passes a rigorous multi-point certification before it reaches our floor." },
+  { icon:"search", title:"Multi-Point Inspection", desc:"200+ checkpoints covering performance, safety, and cosmetic condition." },
+  { icon:"card", title:"Financing Solutions", desc:"Tailored financing and leasing structured around how you actually drive." },
+  { icon:"truck", title:"Nationwide Delivery", desc:"White-glove, enclosed-transport delivery to your door, anywhere in the country." },
+  { icon:"shield", title:"Warranty Included", desc:"Every vehicle leaves Apex backed by a comprehensive limited warranty." },
+  { icon:"repeat", title:"Trade-In Program", desc:"Transparent, data-backed valuations. Trade in the same day you buy." }
 ];
 function renderWhyUs(){
   document.getElementById("whyGrid").innerHTML = WHY_US.map(w => `
     <div class="why-card will-reveal">
-      <div class="why-icon">${w.icon}</div>
+      <div class="why-icon">${ICONS[w.icon]}</div>
       <h3>${w.title}</h3>
       <p>${w.desc}</p>
     </div>`).join("");
 }
 
 const SERVICES = [
-  { icon:"$", title:"Vehicle Financing", desc:"Competitive rate structures for qualified buyers." },
-  { icon:"↻", title:"Trade-In Valuation", desc:"Instant, data-driven estimates on your current vehicle." },
-  { icon:"⏱", title:"Test Drive Booking", desc:"Schedule private, by-appointment test drives." },
-  { icon:"⚙", title:"Vehicle Maintenance", desc:"Factory-trained technicians, genuine parts only." },
-  { icon:"🛡", title:"Extended Warranty", desc:"Extend your coverage well beyond the standard term." },
-  { icon:"✈", title:"Import Assistance", desc:"End-to-end support for international acquisitions." },
-  { icon:"◈", title:"Insurance Support", desc:"Connect with specialty insurers for high-value vehicles." }
+  { icon:"card", title:"Vehicle Financing", desc:"Competitive rate structures for qualified buyers." },
+  { icon:"repeat", title:"Trade-In Valuation", desc:"Instant, data-driven estimates on your current vehicle." },
+  { icon:"clock", title:"Test Drive Booking", desc:"Schedule private, by-appointment test drives." },
+  { icon:"wrench", title:"Vehicle Maintenance", desc:"Factory-trained technicians, genuine parts only." },
+  { icon:"shield", title:"Extended Warranty", desc:"Extend your coverage well beyond the standard term." },
+  { icon:"plane", title:"Import Assistance", desc:"End-to-end support for international acquisitions." },
+  { icon:"umbrella", title:"Insurance Support", desc:"Connect with specialty insurers for high-value vehicles." }
 ];
 function renderServices(){
   document.getElementById("servicesGrid").innerHTML = SERVICES.map(s => `
     <div class="service-card will-reveal">
-      <div class="why-icon">${s.icon}</div>
+      <div class="why-icon">${ICONS[s.icon]}</div>
       <h3>${s.title}</h3>
       <p>${s.desc}</p>
     </div>`).join("");
@@ -428,32 +441,6 @@ function initFinanceCalculator(){
   calc();
 }
 
-
-/* ---------------------------------------------------------
-   10. TESTIMONIALS
-   --------------------------------------------------------- */
-const TESTIMONIALS = [
-  { name:"Marcus Whitfield", role:"Porsche 911 Turbo S Owner", stars:5, photo:"https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop",
-    quote:"From the first walkaround to delivery, everything felt considered. Apex found me a spec I didn't know existed." },
-  { name:"Elena Marchetti", role:"Ferrari Roma Owner", stars:5, photo:"https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
-    quote:"The trade-in valuation was fair and fast, and the financing team structured terms I actually understood." },
-  { name:"David Osei", role:"Taycan Turbo S Owner", stars:5, photo:"https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop",
-    quote:"Nationwide delivery meant I never had to leave home, and the car arrived exactly as described." }
-];
-function renderTestimonials(){
-  document.getElementById("testimonialTrack").innerHTML = TESTIMONIALS.map(t => `
-    <div class="testimonial-card will-reveal">
-      <div class="testimonial-stars">${"★".repeat(t.stars)}</div>
-      <p class="quote">"${t.quote}"</p>
-      <div class="testimonial-person">
-        <img src="${t.photo}" alt="${t.name}" loading="lazy">
-        <div>
-          <h4>${t.name}</h4>
-          <span>${t.role}</span>
-        </div>
-      </div>
-    </div>`).join("");
-}
 
 /* ---------------------------------------------------------
    11. GALLERY
@@ -603,7 +590,7 @@ function initBackToTop(){
 
 
 /* ---------------------------------------------------------
-   18. MODALS — vehicle details + test drive booking
+   18. MODALS - vehicle details + test drive booking
    --------------------------------------------------------- */
 function openModal(modal){
   modal.classList.add("is-open");
@@ -656,7 +643,7 @@ function vehicleModalHTML(v){
       </div>
 
       <div class="vd-finance-note">
-        💳 Financing available from an estimated <strong>${money(monthlyEst)}/mo</strong> — see the Finance Calculator for a custom quote.
+        ${ICONS.card} Financing available from an estimated <strong>${money(monthlyEst)}/mo</strong>, see the Finance Calculator for a custom quote.
       </div>
 
       <div class="vd-actions">
@@ -758,7 +745,7 @@ function initLightbox(){
 
 
 /* ---------------------------------------------------------
-   20. FORMS — contact, test drive, newsletter (demo submits)
+   20. FORMS - contact, test drive, newsletter (demo submits)
    --------------------------------------------------------- */
 function initForms(){
   // Contact form (Netlify-compatible; also demo-success for local preview)
